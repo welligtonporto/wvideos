@@ -1,0 +1,156 @@
+<nav class="nav-default">
+
+    <div class="nav-wrapper">
+
+        <div class="input-field left">
+
+            <input type="search" placeholder="Search"
+                [formControl]="searchTerm">
+
+            <label class="label-icon" for="search">
+                <i class="material-icons">search</i>
+            </label>
+
+            <i class="material-icons">close</i>
+            
+        </div>
+        <!-- .input-field -->
+
+        <label for="open-week" class="btn-floating right">
+            <i class="material-icons">access_time</i>
+        </label>
+
+    </div>
+    <!-- .nav-wrapper -->
+
+</nav>
+
+<input type="checkbox" id="open-week">
+
+<section class="week">
+
+    <div class="container">
+
+        <form [formGroup]="timeToExpend">
+
+            <h2>Time to watch</h2>
+
+            <p>Tell for us: how much <strong>minutes</strong> you can expend daily for watch the videos?</p>
+
+            <div class="row">
+
+                <div class="input-field col s6 m3">
+                  <label class="active" for="timeToExpendSunday">Sunday</label>
+
+                  <input type="number" step="10" id="timeToExpendSunday"
+                    formControlName="sunday">
+                </div>
+                <!-- .col -->
+
+                <div class="input-field col s6 m3">
+                  <label class="active" for="timeToExpendMonday">Monday</label>
+
+                  <input type="number" step="10" id="timeToExpendMonday"
+                    formControlName="monday">
+                </div>
+                <!-- .col -->
+
+                <div class="input-field col s6 m3">
+                  <label class="active" for="timeToExpendTuesday">Tuesday</label>
+
+                  <input type="number" step="10" id="timeToExpendTuesday"
+                    formControlName="tuesday">
+                </div>
+                <!-- .col -->
+
+                <div class="input-field col s6 m3">
+                  <label class="active" for="timeToExpendWednesday">Wednesday</label>
+
+                  <input type="number" step="10" id="timeToExpendWednesday"
+                    formControlName="wednesday">
+                </div>
+                <!-- .col -->
+
+                <div class="input-field col s6 m3">
+                  <label class="active" for="timeToExpendThursday">Thursday</label>
+
+                  <input type="number" step="10" id="timeToExpendThursday"
+                    formControlName="thursday">
+                </div>
+                <!-- .col -->
+
+                <div class="input-field col s6 m3">
+                  <label class="active" for="timeToExpendFriday">Friday</label>
+
+                  <input type="number" step="10" id="timeToExpendFriday"
+                    formControlName="friday">
+                </div>
+                <!-- .col -->
+
+                <div class="input-field col s6 m3">
+                  <label class="active" for="timeToExpendSaturday">Saturday</label>
+
+                  <input type="number" step="10" id="timeToExpendSaturday"
+                    formControlName="saturday">
+                </div>
+                <!-- .col -->
+
+            </div>
+            <!-- .row -->
+
+        </form>
+
+    </div>
+    <!-- .container -->
+
+</section>
+<!-- .filters -->
+
+<section class="content">
+
+    <div class="container">
+
+        <p class="center-align">You will expend <strong class="teal-text">{{ daysToWatchAllVideos }} days</strong> for watch all videos found.</p>
+
+        <small class="change-time center-align">You can <label for="open-week" class="teal-text">change how much time</label> you can expend daily for watch the videos.</small>
+
+        <ul class="row">
+
+            <li class="card-col col s12 m6 l4"
+                *ngFor="let video of videos">
+
+                <div class="card">
+
+                    <div class="card-image">
+                        <img [src]="video.thumb">
+
+                        <small class="card-duration">{{ video.durationForShow }}</small>
+                    </div>
+                    <!-- .card-image -->
+
+                    <div class="card-content">
+                        <span class="card-title">{{ video.title }}</span>
+
+                        <p class="card-description">{{ video.description }}</p>
+                    </div>
+                    <!-- .card-content -->
+
+                </div>
+                <!-- .card -->
+            </li>
+
+        </ul>
+        <!-- .row -->
+
+        <div class="center-align">
+            <button class="btn"
+                *ngIf="showButtonPagination"
+                (click)="getPage()">MORE VIDEOS</button>
+        </div>
+        <!-- .center-align -->
+
+    </div>
+    <!-- .container -->
+
+</section>
+<!-- .content -->
